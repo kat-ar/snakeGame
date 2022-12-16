@@ -6,7 +6,7 @@ pygame.init()
 
 # GLOBALS VARIABLES
 width = 500
-height = 100
+height = 600
 play_width = 500 
 play_height = 500
 
@@ -162,12 +162,19 @@ def drawGrid(w,rows,surface):
     surface.blit(text, textRect)
     pygame.display.update()
 '''
-def redrawWindow(surface):
+def redrawWindow(surface, score = 0, high_score = 0):
     global rows, width, s
     surface.fill((169,169,169))
     s.draw(surface)
     snack.draw(surface)
     drawGrid(width, rows, surface)
+
+    font = pygame.font.SysFont('courier', 20, bold = False)
+    label = font.render('Score: {}'.format(score), 1, (255,255,255))
+    surface.blit(label,(top_left_x + 10, height - label.get_height() - 20))
+
+    label = font.render('High Score: {}'.format(high_score), 1, (255,255,255))
+    surface.blit(label,(width - label.get_width() - 10, height - label.get_height() - 20))
     pygame.display.update()
 
 def randomSnack(rows,item):
@@ -219,6 +226,7 @@ def main(win):
     snack = Cube(randomSnack(rows, s), color=(204,0,0))
     clock = pygame.time.Clock()
     s.reset((10,10))
+    score = 1
     run = True
     while run:
         pygame.time.delay(50)
@@ -226,6 +234,7 @@ def main(win):
         s.move()
         if s.body[0].pos == snack.pos: # if snake's head touches the snack
             s.addCube() # prolongate body
+            score += 1
             snack = Cube(randomSnack(rows, s), color=(204,0,0)) # new random snack
 
         for x in range(len(s.body)):
@@ -234,13 +243,11 @@ def main(win):
                 draw_text_middle(win, 'Game over! Total score: {}'.format(score),30,(0,0,0))
                 #message_box('Game over!', 'Total score: ' + str(score) + '. Play again.')
                 pygame.display.update()
-                pygame.time.delay(1500)
+                pygame.time.delay(2000)
                 run = False
                 break
-        redrawWindow(win)
-            
-    
-        
+        redrawWindow(win, score)
+
     pass
 
 #win = pygame.display.set_mode((width, width))
