@@ -14,13 +14,14 @@ https://www.youtube.com/watch?v=XGf2GcyHPhc&t=2736s
 ## What I learned
 I decided to recreate this code and add my own functionalities in order to start getting familiar with pygame library.
 
+It is also my very first experience working with code someone else created - adding my own functionalities, repairing mistakes I found in someone else's work. It looks to me like working on a project someone abandoned before finishing it.
+
 ## Functionalities
 * Added:
   - Start (and restart) a game on key press
 * Currently I'm working on:
   - Display live score
 * Yet to be added:
-  - Display live score
   - Scoreboard (for current session)
 
 ## Technologies
