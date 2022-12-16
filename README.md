@@ -16,9 +16,9 @@ I decided to recreate this code and add my own functionalities in order to start
 
 ## Functionalities
 * Added:
-  - (None yet)
-* Currently I'm working on:
   - Start (and restart) a game on key press
+* Currently I'm working on:
+  - Display live score
 * Yet to be added:
   - Display live score
   - Scoreboard (for current session)
