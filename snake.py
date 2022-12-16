@@ -198,13 +198,33 @@ def message_box(subject, content):
     except:
         pass
 '''
+Writes new high score in a text file
+'''
+def update_scores(nscore):
+    score = get_max_score()
+    with open('scores.txt', 'a') as f:
+        if int(nscore) > int(score):
+            f.write('\n')
+            f.write(str(nscore))
+'''
+Reads current high score from a text file
+'''
+def get_max_score():
+    with open('scores.txt', 'r') as f:
+        data = [int(x) for x in f.readlines()]
+    return max(data)
+'''
 Draws text right in the middle of the window, on top of whatever is there
 '''
 def draw_text_middle(surface, text, size, color):
     font = pygame.font.SysFont('courier', size, bold = True)
     label = font.render(text, 1, color)
     surface.blit(label,(top_left_x + play_width /2 - (label.get_width()/2), top_left_y + play_height/2 - (label.get_height()/2)))
-
+'''
+Main menu - lets the player rest between the games. 
+Player must hit any keyboard key in order to start playing.
+Main menu shows as first game window and every time we loose the game. 
+'''
 def main_menu(win):
     run = True
     while run:
@@ -218,7 +238,9 @@ def main_menu(win):
             if event.type == pygame.KEYDOWN:
                 main(win)
     pygame.display.quit()
-
+'''
+Main window functionalities
+'''
 def main(win):
     global rows, s, snack
     rows = 20 #the higher the harder the game
@@ -240,13 +262,14 @@ def main(win):
         for x in range(len(s.body)):
             if s.body[x].pos in list(map(lambda z:z.pos, s.body[x+1:])): #looping through every cube in our body, checking if we are not hitting it with head
                 score = len(s.body)
+                update_scores(score)
                 draw_text_middle(win, 'Game over! Total score: {}'.format(score),30,(0,0,0))
                 #message_box('Game over!', 'Total score: ' + str(score) + '. Play again.')
                 pygame.display.update()
                 pygame.time.delay(2000)
                 run = False
                 break
-        redrawWindow(win, score)
+        redrawWindow(win, score, get_max_score())
 
     pass
 
