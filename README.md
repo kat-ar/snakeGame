@@ -18,11 +18,14 @@ It is also my very first experience working with code someone else created - add
 
 ## Functionalities
 * Added:
-  - Start (and restart) a game on key press
-* Currently I'm working on:
+  - Main menu of sorts: Start (and restart) a game on key press
   - Display live score
+  - Display current high score
+* Currently I'm working on:
+  - Scoreboard (high scores and nickname)
 * Yet to be added:
-  - Scoreboard (for current session)
+  - Improve movements (pressing right-key disabled when snake is moving left etc)
+  - Choosing snake colour
 
 ## Technologies
 Project is created with
