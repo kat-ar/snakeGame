@@ -198,7 +198,8 @@ def message_box(subject, content):
     except:
         pass
 '''
-Writes new high score in a text file
+Writes any new high score in a text file - scores.txt stores all 
+high scores scored
 '''
 def update_scores(nscore):
     score = get_max_score()
