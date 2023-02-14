@@ -1,13 +1,16 @@
 import pygame
 
-class Cube(object):
+
+class Cube:
     rows = 20
     w = 500
 
     def __init__(self, start, dirnx=1, dirny=0, color=(0, 179, 89)):
+        self.dirny = dirny
+        self.dirnx = dirnx
         self.pos = start
-        self.dirnx = 1
-        self.dirny = 0
+        # self.dirnx = 1
+        # self.dirny = 0
         self.color = color
 
     def move(self, dirnx, dirny):

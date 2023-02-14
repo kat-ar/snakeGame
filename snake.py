@@ -1,7 +1,7 @@
 from cube import Cube
 import pygame
 import sys
-class Snake(object):
+class Snake:
     body = []
     turns = {}
 
