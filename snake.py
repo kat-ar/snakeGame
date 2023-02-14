@@ -1,6 +1,8 @@
 from cube import Cube
 import pygame
 import sys
+
+
 class Snake:
     body = []
     turns = {}
@@ -23,7 +25,7 @@ class Snake:
                 pygame.quit()
                 sys.exit()
             keys = pygame.key.get_pressed()
-            for key in keys:
+            for _ in keys:
                 # turning left
                 if keys[pygame.K_LEFT]:
                     self.dirnx = -1
@@ -53,7 +55,7 @@ class Snake:
                 if i == len(self.body) - 1:  # if we are at the last cube we do not need to remember
                     self.turns.pop(position)
 
-            else:  # ifs handle screen egdes, else handles normal movement
+            else:  # ifs handle screen edges, else handles normal movement
                 if cube.dirnx == -1 and cube.pos[0] <= 0:
                     cube.pos = (cube.rows - 1, cube.pos[1])
                 elif cube.dirnx == 1 and cube.pos[0] >= cube.rows - 1:
@@ -82,7 +84,7 @@ class Snake:
     Adding a new cube depends on which direction the snake is moving. 
     """
 
-    def addCube(self):
+    def add_cube(self):
         tail = self.body[-1]
         dx, dy = tail.dirnx, tail.dirny
         # if snake is moving right

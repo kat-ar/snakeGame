@@ -74,7 +74,7 @@ def message_box(subject, content):
     messagebox.showinfo(subject, content)
     try:
         root.destroy()
-    except:
+    except Exception:
         pass
 
 
@@ -155,7 +155,7 @@ def main(win):
         clock.tick(10)
         s.move()
         if s.body[0].pos == snack.pos:  # if snake's head touches the snack
-            s.addCube()  # prolongate body
+            s.add_cube()  # prolongate body
             score += 1
             snack = Cube(random_snack(rows, s), color=(204, 0, 0))  # new random snack
 
